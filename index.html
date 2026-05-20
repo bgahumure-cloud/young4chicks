@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Young 4Chicks - Landing Page</title>
+  <style>
+    :root {
+      --brand-orange: orange;
+      --card-shadow: rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      color: #fff;
+      background: url('chicken-picture-min.jpg') no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: sticky;
+    }
+
+    header,
+    nav {
+      background-color: rgba(0, 0, 0, 0.85);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      max-width: 1200px;
+      margin: auto;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: var(--brand-orange);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--brand-orange);
+    }
+
+    .action-btn {
+      background-color: var(--brand-orange);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .action-btn:hover {
+      background-color: darkorange;
+    }
+
+    .hero-section {
+      height: 90vh;
+      background: url('ai-generated-chicken-picture.jpg') no-repeat center center;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+      padding: 20px;
+    }
+
+    .hero-content h1 {
+      font-size: 3.5rem;
+      color: var(--brand-orange);
+      margin-bottom: 1rem;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+
+    .about-section {
+      padding: 60px 20px;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .about-section h2 {
+      font-size: 36px;
+      color: var(--brand-orange);
+      margin-bottom: 20px;
+    }
+
+    .about-section p {
+      max-width: 800px;
+      margin: auto;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .cards-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 40px 0;
+    }
+
+    .card {
+      background-color: black;
+      border-top: 4px solid var(--brand-orange);
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 300px;
+      flex: 1;
+      transition: transform 0.3s;
+    }
+
+    .card h3 {
+      color: var(--brand-orange);
+      margin-bottom: 15px;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .contact-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 20px;
+    }
+
+    .contact-container {
+      background-color: rgba(0, 0, 0, 0.85);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      padding: 40px;
+      border-radius: 10px;
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    .contact-container h1 {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2rem;
+    }
+
+    .contact-info,
+    .contact-form {
+      flex: 1 1 45%;
+      min-width: 300px;
+    }
+
+    .info-box {
+      margin-bottom: 20px;
+      border-left: 4px solid var(--brand-orange);
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .info-box i {
+      margin-right: 10px;
+      color: var(--brand-orange);
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background: transparent;
+      color: white;
+    }
+
+    .contact-form textarea {
+      resize: vertical;
+      height: 100px;
+    }
+
+    .contact-form button {
+      padding: 10px 20px;
+      background: var(--brand-orange);
+      color: black;
+      font-weight: bold;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .contact-form button:hover {
+      background: darkorange;
+    }
+
+    .login-section {
+      padding: 60px 20px;
+      display: flex;
+      justify-content: center;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .login-container {
+      background-color: rgba(0, 0, 0, 0.85);
+      color: #fff;
+      display: flex;
+      flex-wrap: wrap;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 900px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .welcome-section,
+    .sign-in-section {
+      flex: 1 1 50%;
+      padding: 40px;
+    }
+
+    .welcome-section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .social-links a img {
+      width: 24px;
+      margin: 0 8px;
+      filter: invert(100%);
+    }
+
+    .sign-in-section h2 {
+      margin-bottom: 25px;
+      font-size: 26px;
+      color: var(--brand-orange);
+    }
+
+    .login-form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .input-group {
+      margin-bottom: 15px;
+    }
+
+    .input-group label {
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+
+    .input-group input {
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      background: #333;
+      color: white;
+    }
+
+    .options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+      color: #ccc;
+      font-size: 14px;
+    }
+
+    .login-button {
+      background-color: var(--brand-orange);
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    .login-button:hover {
+      background-color: darkorange;
+    }
+
+    .signup-link {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    .signup-link a {
+      color: var(--brand-orange);
+      text-decoration: none;
+    }
+
+    .footer {
+      background-color: #111;
+      color: #ccc;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      margin-top: auto;
+    }
+
+    @media (max-width: 768px) {
+
+      .cards-container,
+      .contact-container,
+      .login-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+      }
+
+      .navbar {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .welcome-section,
+      .sign-in-section {
+        flex: 1 1 100%;
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">YOUNG 4<span>CHICKS</span></div>
+      <div class="nav-links">
+        <a href="#hero">HOME</a>
+        <a href="#about">ABOUT US</a>
+        <a href="#contact">CONTACT</a>
+        <a href="#login">LOGIN</a>
+      </div>
+      <a href="signeapp page.html" class="action-btn">Get Started</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero-section" id="hero">
+    <div class="hero-content">
+      <h1>Welcome</h1>
+      <p>Kickstart Your Empire — One Chick at a Time, Backed by Purpose. Built for Profit.</p>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about-section" id="about">
+    <h2>ABOUT US</h2>
+    <p>Young4ChickS is an urban brooder initiative targeting youth aged 18–30. Founded by a Youth Member of Parliament,
+      it aims to empower young urban dwellers by enabling them to participate in wealth creation through poultry
+      farming.</p>
+    <div class="cards-container">
+      <div class="card">
+        <h3>MISSION</h3>
+        <p>To stimulate wealth creation and economic involvement among youth through accessible poultry farming
+          opportunities.</p>
+      </div>
+      <div class="card">
+        <h3>VISION</h3>
+        <p>To become a leading youth-centered agricultural empowerment platform in urban settings.</p>
+      </div>
+      <div class="card">
+        <h3>ACHIEVEMENTS</h3>
+        <p>Over 1,200 youth farmers supported since launch with digitized systems and transparent distribution.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact-section" id="contact">
+    <div class="contact-container">
+      <h1>CONTACT US</h1>
+      <div class="contact-info">
+        <div class="info-box"><i>📍</i><strong>Address:</strong> Kampala, Uganda</div>
+        <div class="info-box"><i>📞</i><strong>Phone:</strong> +256 762 360516</div>
+        <div class="info-box"><i>📧</i><strong>Email:</strong> tillybrucegahumure@gmail.com</div>
+      </div>
+      
+      <div class="contact-form">
+        <form>
+          <input type="text" placeholder=" Enter Your Full Name" required />
+          <input type="email" placeholder="Your Email" required />
+          <input type="tel" placeholder="Your Phone Number" required />
+          <textarea placeholder="Your Message" required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Login -->
+  <section class="login-section" id="login">
+    <div class="login-container">
+      <div class="welcome-section">
+        <h1>Welcome Back!</h1>
+        <p>Login to continue your poultry journey.</p>
+        <div class="social-links">
+          <a href="#"><img src="facebook.png" alt="Facebook" /></a>
+          <a href="#"><img src="x.png" alt="X" /></a>
+          <a href="#"><img src="email.png" alt="Email" /></a>
+        </div>
+      </div>
+      <div class="sign-in-section">
+        <h2>Log In</h2>
+        <form class="login-form" id="loginForm">
+          <div class="input-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Enter your email" required />
+          </div>
+          <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Password" required />
+          </div>
+          <div class="options">
+            <label><input type="checkbox" id="rememberMe" /> Remember Me</label>
+          </div>
+          <button type="submit" class="login-button">Log In</button>
+        </form>
+        <p class="signup-link">Don't have an account? <a href="signeapp page.html">Sign Up</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    &copy; 2025 Young 4Chicks. All rights reserved.
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      try {
+        const res = await fetch('http://localhost:5000/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password }),
+        });
+
+        const data = await res.json();
+        if (res.ok) {
+          alert('Login successful ');
+        } else {
+          alert(data.message || 'Login failed');
+        }
+      } catch (err) {
+        console.error(err);
+        alert('Server error. Try again.');
+      }
+    });
+  </script>
+</body>
+
+</html>
